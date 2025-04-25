@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hosting</title>
+</head>
+<body>
+    <script>
+   //func 1
+   var x = 1;
+function test() {
+    console.log(x);
+    var x = 5;
+    console.log(x);
+}
+console.log(x);
+//first output = undefined ... var 'a' is global and func in local 
+// sec output = 5 ... var 'a' is inited in func 
+// third output = 1 ... global var 'a' is init and equals 1
+
+// sec func
+function outer() {
+    var a = 10;
+    function inner() {
+        console.log(a);
+        var a = 20;
+        console.log(a);
+    }
+    inner();
+}
+outer();
+console.log(a);
+// first output = undefined ... var 'a' is declared outside the inner func
+// sec output = 20 ... var 'a' is init in the same inner func
+// third output = NOT defined ... var 'a' isn't even declared globally
+
+//third func
+console.log(foo);
+var foo = "Hello";
+
+function sayHi() {
+    console.log(foo);
+    var foo = "Hi";
+    console.log(foo);
+}
+sayHi();
+//first output = undefined ... var foo is hosted and read before the console log line
+// sec output = undefined ... again global var foo is hosted and declared before the console log line
+//third output = "Hi" ... var foo is inited before printing
+</script>
+test(); 
+</body>
+</html>
